@@ -1,0 +1,2 @@
+$ echo "Hello" | curl -X PUT --data @- https://HOST/12345
+$ curl https://HOST/12345
