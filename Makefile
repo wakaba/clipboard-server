@@ -13,7 +13,7 @@ updatenightly: local/bin/pmbp.pl
 
 ## ------ Setup ------
 
-deps:
+deps: always
 	true # dummy for make -q
 ifdef PMBP_HEROKU_BUILDPACK
 else
@@ -49,5 +49,7 @@ test-deps: deps
 
 test-main:
 	$(PROVE) t/*.t
+
+always:
 
 ## License: Public Domain.
