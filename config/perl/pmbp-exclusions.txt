@@ -1,0 +1,25 @@
+- "../../modules/json-functions-xs" tests
+- "../../modules/json-ps" tests
+- "../../modules/karasuma-config" tests
+- "../../modules/wanage" tests datetime mp
+- "../../modules/web-css" tests datetime mp
+- "../../modules/web-datetime" tests datetime mp
+- "../../modules/web-dom" tests build
+- "../../modules/web-markup" tests build
+- "../../modules/web-url" tests build
+- "../../modules/web-encodings" tests build
+- "../../modules/ooutils" tests test build classdiamondgenerator classregistry operationresponse objectcachesmethod
+- "../../modules/swml-parser" tests build
+- "../../modules/charclass" tests build
+- "../../modules/web-useragent-functions" tests oauth wsse testws cli curl anyeventsocks lwp
+- "../../modules/dongry" tests datetime mp
+- "../../modules/anyevent-mysql-client" tests
+- "../../modules/rdb-utils" tests
+- "../../modules/temma" tests
+- "../../modules/twiggy-packed" tests twiggy twiggyprefork parallelprefork
+- "../../modules/promise" tests
+- "../../modules/promised-command" tests
+- "../../modules/promised-file" tests
+- "../../modules/promised-plackup" tests
+- "../../modules/promised-mysqld" tests
+- "../../t_deps/modules/test-x1" tests
