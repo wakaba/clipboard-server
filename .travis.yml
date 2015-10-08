@@ -1,7 +1,6 @@
 language: perl
 perl:
   - "5.22"
-sudo: required
 before_install: git submodule update --init
 install: "make test-deps"
 script: "make test"
