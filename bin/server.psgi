@@ -9,6 +9,8 @@ return sub {
   my $http = Wanage::HTTP->new_from_psgi_env ($_[0]);
   return $http->send_response (onready => sub {
     my $path = $http->url->{path};
+    $http->set_response_header
+        ('Strict-Transport-Security' => 'max-age=2592000; includeSubDomains; preload');
     if ($path =~ m{\A/([1-9][0-9]*)\z}) {
       my $key = $1;
       my $method = $http->request_method;
