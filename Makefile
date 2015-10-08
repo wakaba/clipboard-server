@@ -16,13 +16,10 @@ updatenightly: local/bin/pmbp.pl
 deps:
 	true # dummy for make -q
 ifdef PMBP_HEROKU_BUILDPACK
-	$(MAKE) deps-heroku
+else
+	$(MAKE) git-submodules
 endif
-	$(MAKE) git-submodules pmbp-install
-
-deps-heroku:
-	$(GIT) init
-	cp dot.gitmodules .gitmodules
+	$(MAKE) pmbp-install
 
 git-submodules:
 	$(GIT) submodule update --init
