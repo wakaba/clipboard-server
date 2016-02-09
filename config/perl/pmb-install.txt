@@ -1,4 +1,4 @@
-Scalar::Util~1.42
+Scalar::Util~1.43
 Pod::Usage~1.68
 Pod::Text~4.06
 IO::Handle~1.28
