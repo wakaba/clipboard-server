@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 use Wanage::HTTP;
+use MIME::Base64 qw(decode_base64);
 
 my $Data = {};
 
@@ -17,6 +18,17 @@ return sub {
       if ($method eq 'POST') {
         if (@{$http->request_uploads->{file} || []}) {
           $Data->{$key} = \scalar $http->request_uploads->{file}->[0]->as_f->slurp;
+        } elsif (defined $http->request_body_params->{base64}->[0]) {
+          my $b64 = $http->request_body_params->{base64}->[0];
+          if ($b64 =~ s{^[Dd][Aa][Tt][Aa]:[^,]*?;[Bb][Aa][Ss][Ee]64,}{}) {
+            $b64 =~ s/%([0-9A-Fa-f]{2})/pack 'C', hex $1/ge;
+            $b64 = decode_base64 $b64;
+          } elsif ($b64 =~ s{^[Dd][Aa][Tt][Aa]:[^,]*,}{}) {
+            $b64 =~ s/%([0-9A-Fa-f]{2})/pack 'C', hex $1/ge;
+          } else {
+            $b64 = decode_base64 $b64;
+          }
+          $Data->{$key} = \$b64;
         } else {
           $Data->{$key} = \($http->request_body_params->{data}->[0] // '');
         }
@@ -44,11 +56,17 @@ return sub {
         <!DOCTYPE HTML>
         <title>Clipboard</title>
         <style>
-          form {
+          section {
             margin: .5rem;
             border: blue 1px solid;
             padding: .5rem;
           }
+          h1 {
+            margin: .5rem 0;
+            font-size: 100%;
+            font-weight: bolder;
+          }
+          h1::after { content: ":" }
           p {
             margin: .5rem 0;
             text-align: center;
@@ -64,22 +82,37 @@ return sub {
             padding: .3rem;
           }
         </style>
-        <form method=post action=./>
-          <p><textarea name=data></textarea>
-          <script>
-            fetch ('./').then (function (res) {
-              return res.text ();
-            }).then (function (text) {
-              document.forms[0].elements.data.value = text;
-            });
-          </script>
-          <p><button type=submit>Save</button>
-        </form>
 
-        <form method=post action=./ enctype=multipart/form-data>
-          <p><input type=file name=file>
-          <p><button type=submit>Upload</button>
-        </form>
+        <section>
+          <h1>Text</h1>
+          <form method=post action=./>
+            <p><textarea name=data></textarea>
+            <script>
+              fetch ('./').then (function (res) {
+                return res.text ();
+              }).then (function (text) {
+                document.forms[0].elements.data.value = text;
+              });
+            </script>
+            <p><button type=submit>Save</button>
+          </form>
+        </section>
+
+        <section>
+          <h1>Base64</h1>
+          <form method=post action=./>
+            <p><textarea name=base64></textarea>
+            <p><button type=submit>Save</button>
+          </form>
+        </section>
+
+        <section>
+          <h1>File</h1>
+          <form method=post action=./ enctype=multipart/form-data>
+            <p><input type=file name=file>
+            <p><button type=submit>Upload</button>
+          </form>
+        </section>
       });
       $http->close_response_body;
     } else {
