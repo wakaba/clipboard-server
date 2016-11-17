@@ -9,5 +9,5 @@ Path::Tiny~0.098
 Pod::Usage~1.69
 Scalar::Util~1.46
 Time::HiRes~1.9740
-Time::Local~1.24
+Time::Local~1.25
 parent~0.236
