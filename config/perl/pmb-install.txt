@@ -1,5 +1,5 @@
 Carp~1.38
-Encode~2.87
+Encode~2.88
 Exporter::Lite~0.08
 File::Temp~0.2304
 IO::Handle~1.28
