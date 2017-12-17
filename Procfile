@@ -1,1 +1,1 @@
-web: ./plackup -p $PORT bin/server.psgi
+web: ./perl bin/sarze.pl $PORT

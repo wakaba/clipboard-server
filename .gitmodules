@@ -2,10 +2,6 @@
 	path = modules/wanage
 	url = https://github.com/wakaba/wanage
 	track = master
-[submodule "modules/charclass"]
-	path = modules/charclass
-	url = https://github.com/wakaba/perl-charclass
-	track = master
 [submodule "modules/ooutils"]
 	path = modules/ooutils
 	url = https://github.com/wakaba/perl-ooutils
@@ -17,10 +13,6 @@
 [submodule "modules/web-url"]
 	path = modules/web-url
 	url = https://github.com/manakai/perl-web-url
-	track = master
-[submodule "modules/twiggy-packed"]
-	path = modules/twiggy-packed
-	url = https://github.com/wakaba/perl-twiggy-packed
 	track = master
 [submodule "modules/sarze"]
 	path = modules/sarze

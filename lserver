@@ -1,0 +1,5 @@
+#!/bin/bash
+rootpath=$(cd `dirname $0` && pwd)
+
+echo Server: http://localhost:5333
+exec $rootpath/perl $rootpath/bin/sarze.pl 5333
