@@ -83,23 +83,41 @@ return sub {
           }
         </style>
 
+        <h1>Clipboard</h1>
+
+        <p>URL: <a href><code class=replace-by-url>url</code></a>
+        <button type=button onclick="
+          var range = document.createRange ();
+          range.selectNode (previousElementSibling);
+          getSelection ().empty ();
+          getSelection ().addRange (range);
+          document.execCommand ('copy')
+        ">Copy</button>
+
         <section>
-          <h1>Text</h1>
-          <form method=post action=./>
+          <h1>Edit as text</h1>
+          <form method=post action=./ onsubmit="
+            fetch ('./', {method: 'POST', body: new FormData (this)}).then ((res) => {
+              this.elements.status.value = res.status;
+            });
+            return false;
+          ">
             <p><textarea name=data></textarea>
             <script>
               fetch ('./').then (function (res) {
                 return res.text ();
               }).then (function (text) {
                 document.forms[0].elements.data.value = text;
+                document.forms[0].elements.status.value = 'Ready';
               });
             </script>
             <p><button type=submit>Save</button>
+            <output name=status></output>
           </form>
         </section>
 
         <section>
-          <h1>Base64</h1>
+          <h1>Upload a base64-encoded data</h1>
           <form method=post action=./>
             <p><textarea name=base64></textarea>
             <p><button type=submit>Save</button>
@@ -107,12 +125,32 @@ return sub {
         </section>
 
         <section>
-          <h1>File</h1>
+          <h1>Upload a file</h1>
           <form method=post action=./ enctype=multipart/form-data>
             <p><input type=file name=file>
             <p><button type=submit>Upload</button>
           </form>
         </section>
+
+        <section>
+          <h1>Upload by curl</h1>
+
+          <code>$ <span>curl -X PUT --data-binary @<var>file</var> <span class=replace-by-url>URL</span></span></code>
+          <button type=button onclick="
+            var range = document.createRange ();
+            range.selectNode (previousElementSibling.lastElementChild);
+            getSelection ().empty ();
+            getSelection ().addRange (range);
+            document.execCommand ('copy')
+          ">Copy</button>
+        </section>
+
+        <script>
+          document.querySelectorAll ('.replace-by-url').forEach ((e) => {
+            e.textContent = location.protocol + '//' + location.host + '/' + location.pathname.split (/\//)[1];
+            if (e.parentNode.localName === 'a') e.parentNode.href = e.textContent;
+          });
+        </script>
       });
       $http->close_response_body;
     } else {
