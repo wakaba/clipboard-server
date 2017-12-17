@@ -23,3 +23,12 @@
 - "../../modules/promised-plackup" tests
 - "../../modules/promised-mysqld" tests
 - "../../t_deps/modules/test-x1" tests
+
+- "../../modules/web-resource" build tests
+- "../../modules/promise" build tests
+- "../../modules/web-url.2" build tests
+- "../../modules/web-encodings.2" build tests
+- "../../modules/web-datetime" build tests
+- "../../modules/promise.2" build tests
+- "../../modules/web-datetime.2" build tests
+- "../../modules/streams" build tests

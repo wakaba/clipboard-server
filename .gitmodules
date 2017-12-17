@@ -22,3 +22,23 @@
 	path = modules/twiggy-packed
 	url = https://github.com/wakaba/perl-twiggy-packed
 	track = master
+[submodule "modules/sarze"]
+	path = modules/sarze
+	url = https://github.com/wakaba/sarze
+	track = transport
+[submodule "modules/web-resource"]
+	path = modules/web-resource
+	url = https://github.com/manakai/perl-web-resource
+	track = transport
+[submodule "modules/promise"]
+	path = modules/promise
+	url = https://github.com/wakaba/perl-promise
+	track = master
+[submodule "modules/web-datetime"]
+	path = modules/web-datetime
+	url = https://github.com/manakai/perl-web-datetime
+	track = master
+[submodule "modules/streams"]
+	path = modules/streams
+	url = https://github.com/manakai/perl-streams
+	track = master
