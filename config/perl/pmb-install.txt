@@ -1,5 +1,6 @@
 AnyEvent~7.15
 AnyEvent::Fork~1.31
+AnyEvent::Util
 Canary::Stability~2013
 Carp~1.50
 Cwd~3.75
@@ -10,6 +11,7 @@ File::Temp~0.2309
 IO::FDPass~1.2
 IO::Handle~1.39
 MIME::Base64~3.15
+Math::BigInt~1.999816
 Net::SSLeay~1.88
 Path::Class~0.37
 Path::Tiny~0.108
