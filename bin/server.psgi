@@ -3,7 +3,6 @@ use strict;
 use warnings;
 use Wanage::HTTP;
 use MIME::Base64 qw(decode_base64);
-use Web::Encoding;
 
 my $Data = {};
 
@@ -51,13 +50,9 @@ return sub {
           $http->close_response_body;
         }
       }
-    } elsif ($path =~ m{\A/([1-9][0-9]*)/posthttp\z}) {
+    } elsif ($path =~ m{\A/([1-9][0-9]*)/post\z}) {
       my $key = $1;
-      my $data = '';
-      $data .= encode_web_utf8 ($http->request_method . ' ' . $http->url->stringify . "\x0A");
-      $data .= "\x0A";
-      $data .= ${$http->request_body_as_ref};
-      $Data->{$key} = \$data;
+      $Data->{$key} = $http->request_body_as_ref;
       $http->set_status (201);
       $http->send_response_body_as_ref (\q{Saved});
       $http->close_response_body;
