@@ -141,7 +141,18 @@ return sub {
         <section>
           <h1>Upload by curl</h1>
 
+          <p>
           <code>$ <span>curl -X PUT --data-binary @<var>file</var> <span class=replace-by-url>URL</span></span></code>
+          <button type=button onclick="
+            var range = document.createRange ();
+            range.selectNode (previousElementSibling.lastElementChild);
+            getSelection ().empty ();
+            getSelection ().addRange (range);
+            document.execCommand ('copy')
+          ">Copy</button>
+
+          <p>
+          <code>$ <span>curl --data-binary @<var>file</var> <span class=replace-by-url>URL</span>/post</span></code>
           <button type=button onclick="
             var range = document.createRange ();
             range.selectNode (previousElementSibling.lastElementChild);
