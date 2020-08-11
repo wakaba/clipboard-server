@@ -11,7 +11,9 @@
    "install" : "make test-deps",
    "jobs" : {
       "include" : [
-        {"stage": "test"},
+         {
+            "stage" : "test"
+         },
          {
             "before_install" : "true",
             "install" : "true",
@@ -33,7 +35,7 @@
       }
    },
    "perl" : [
-      "5.26"
+      "5.32"
    ],
    "script" : "make test"
 }

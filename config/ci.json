@@ -3,5 +3,9 @@
     "pmbp": "latest",
     "merger": 1,
     "notifications": "suika"
+  },
+  "circleci": {
+    "pmbp": 1,
+    "heroku": 1
   }
 }
