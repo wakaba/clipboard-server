@@ -10,7 +10,7 @@ Exporter::Lite~0.08
 File::Temp~0.2310
 IO::FDPass~1.2
 IO::Handle~1.42
-MIME::Base64~3.15
+MIME::Base64~3.16
 Math::BigInt~1.999818
 Net::SSLeay~1.88
 Path::Class~0.37
